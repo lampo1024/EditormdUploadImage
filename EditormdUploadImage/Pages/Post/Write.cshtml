@@ -1,0 +1,41 @@
+﻿@page
+@model EditormdUploadImage.Pages.Post.WriteModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Write</title>
+    <link href="~/assets/editor.md/css/editormd.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="editormd">
+        <textarea style="display:none;">### Hello Editor.md !</textarea>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/assets/editor.md/editormd.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var editor = editormd("editormd", {
+                path: "/assets/editor.md/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+                height: '360px',
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL: "http://localhost:63156/api/image/upload",
+            });
+
+            /*
+            // or
+            var editor = editormd({
+                id   : "editormd",
+                path : "../lib/"
+            });
+            */
+        });
+    </script>
+</body>
+</html>
